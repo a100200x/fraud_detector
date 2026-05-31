@@ -1,0 +1,15 @@
+services:
+  scoring_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ml_scoring_container
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./train_data:/app/train_data
